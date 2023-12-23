@@ -1,0 +1,17 @@
+image: maven:3.8-openjdk-17
+
+stages:
+  - build
+
+build:
+  stage: build
+  script:
+    - echo "Start building the project"
+    - mvn clean verify
+  artifacts:
+    when: always
+    paths:
+      - target/site/serenity
+    reports:
+      junit:
+        - target/site/serenity/index.html
